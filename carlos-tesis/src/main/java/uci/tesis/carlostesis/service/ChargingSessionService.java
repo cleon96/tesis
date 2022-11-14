@@ -13,4 +13,5 @@ public interface ChargingSessionService {
     Optional<ChargingSession> getById(Integer id);
     ChargingSession UpdateChargingSession(ChargingSession chargingSession);
     List<ChargingSession> chargingSessionList();
+    void status(ChargingSession chargingSession);
 }

@@ -53,6 +53,16 @@ public class ChargingSessionServiceImpl implements ChargingSessionService{
     public List<ChargingSession> chargingSessionList(){
         List<ChargingSession> list = repository.findAll();
         return list;
-
+    }
+    @Override
+    public void status(ChargingSession chargingSession){
+        ChargingSession session = repository.findById(chargingSession.getChargingSessionId()).orElse(null);
+        if (session.getStatus()==false) {
+            session.setStatus(true);
+        }
+        else{
+            session.setStatus(false);
+        }
+        repository.save(session);
     }
 }

@@ -29,4 +29,5 @@ public class ChargingSession {
     private Integer duration;
     private Double charged;
     private Integer reservationId;
+    private Boolean status;
 }

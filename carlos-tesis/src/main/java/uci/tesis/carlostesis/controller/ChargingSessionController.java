@@ -2,9 +2,9 @@ package uci.tesis.carlostesis.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import uci.tesis.carlostesis.entity.ChargePoint;
 import uci.tesis.carlostesis.entity.ChargingSession;
 import uci.tesis.carlostesis.model.UpdateChargingSession;
+import uci.tesis.carlostesis.model.UpdateStatus;
 import uci.tesis.carlostesis.service.ChargingSessionService;
 
 import java.util.List;
@@ -53,9 +53,18 @@ public class ChargingSessionController {
         }
         return ResponseEntity.ok(chargingSession);
     }
+
     @GetMapping("/getList")
-    public ResponseEntity<List<ChargingSession>> chargeSession(){
+    public ResponseEntity<List<ChargingSession>> chargeSession() {
         List<ChargingSession> list = chargingSessionService.chargingSessionList();
         return ResponseEntity.ok(list);
+    }
+
+    @PutMapping("/status")
+    public void Status(@RequestBody UpdateStatus updateStatus) {
+        ChargingSession session = ChargingSession.builder()
+                .chargingSessionId(updateStatus.getChargingSessionId())
+                .build();
+        chargingSessionService.status(session);
     }
 }

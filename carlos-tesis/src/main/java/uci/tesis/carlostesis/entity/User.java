@@ -5,9 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @AllArgsConstructor
@@ -16,12 +14,13 @@ import javax.persistence.Id;
 @Builder
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
     private Integer userId;
     @Column(name = "role_id")
     private Integer roleId;
     @Column(name = "user_name")
-    private String userName;
+    private String userName;   
     @Column(name = "code_access")
     private String codeAccess;
     @Column(name = "first_name")

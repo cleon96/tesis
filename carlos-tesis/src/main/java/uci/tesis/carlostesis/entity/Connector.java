@@ -5,9 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -17,10 +15,13 @@ import java.util.Date;
 @NoArgsConstructor
 public class Connector {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "connector_id")
     private Integer connectorId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "charge_point_id")
     private Integer chargePointId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "availability_type_id")
     private Integer availabilityTypeId;
     @Column(name = "charge_point_status")

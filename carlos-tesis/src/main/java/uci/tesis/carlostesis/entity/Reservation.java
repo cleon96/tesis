@@ -5,9 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -17,6 +15,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class Reservation {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "reservation_id")
     private Integer reservationId;
     @Column(name = "charge_point_id")
